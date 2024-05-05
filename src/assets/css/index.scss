@@ -1,0 +1,83 @@
+@import url("../fonts/Outfit/main.scss");
+@import url("./@index/IntroAnimations.scss");
+@import url("./@index/SocialLink.scss");
+
+
+
+html {
+    font-family: "Outfit", sans-serif, system-ui;
+    margin: 0;
+    min-height: 100vh;
+    overflow: auto;
+    box-sizing: border-box;
+}
+
+body {
+    @extend html;
+    
+    color: #f8f8ff;
+    background-color: #1f1f1f;/* #28292a */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+div.Intro-con {
+    width: 75vw;
+    max-width: 850px;
+    min-height: 70vh;
+    border-radius: 26px;
+    overflow: hidden;
+
+    color: #f8f8ff;
+    box-shadow: 6px 6px 64px 1px #241f31;
+
+    background-color: #201a1a;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-image: unset;
+
+    @media screen and (max-width: 930px) {
+        min-height: 75vh;
+        background-size: 50%;
+    }
+    @media screen and (orientation: portrait) {
+        background-size: contain;
+    }
+}
+div.Intro {
+    display: flex;
+    justify-content: end;
+    padding: 24px 32px;
+    min-height: 70vh;
+
+    transition: backdrop-filter .45s ease,
+                min-height .25s ease,
+                height .25s ease;
+    
+
+
+    > div {
+        top: 0px;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 24px 32px;
+        text-shadow: black 1px 3px 24px;
+        &.Front {
+            right: 0px;
+            text-align: right;
+        }
+        &.Back {
+            left: 0px;
+        }
+    }
+
+    @media screen and (max-width: 930px) {
+        min-height: 75vh;
+    }
+
+}

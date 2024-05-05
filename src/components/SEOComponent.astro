@@ -1,0 +1,45 @@
+---
+import { SEO } from "astro-seo";
+
+import { SiteName } from "@config/Global";
+import { Description } from "@config/Global";
+import  { SEOConfig } from "@config/Global";
+---
+
+<SEO
+    title={SiteName}
+    description={Description}
+    charset="UTF-8"
+    extend={{
+        link: [
+            { rel: "sitemap", href: "/sitemap-index.xml" },
+            { rel: "icon", type: "image/png", href: "/favicon.ico" },
+        ],
+        meta: [
+            { name: "viewport", content: "width=device-width" },
+            { name: "author", content: SEOConfig.fullname },
+            { name: "profile:gender", content: SEOConfig.gender },
+            { name: "profile:username", content: SEOConfig.fullname },
+            { name: "profile:first_name", content: SEOConfig.firstname },
+            { name: "profile:last_name", content: SEOConfig.lastname },
+        ]
+    }}
+    openGraph={{
+        basic: {
+            type: "profile",
+            title: SiteName,
+            image: "/favicon.ico"
+        },
+        optional: {
+            description: Description,
+            siteName: SiteName,
+        }
+
+    }}
+    twitter={{
+        card: "summary",
+        title: SiteName,
+        description: Description,
+        creator: SEOConfig.TwitterHandle
+    }}
+/>

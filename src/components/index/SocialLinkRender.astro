@@ -1,0 +1,32 @@
+---
+import { SocialLinks } from "@config/SocialLinks";
+import { FollowTip } from "@config/SocialLinks";
+import { Icon } from "astro-icon/components";
+import { CustomColorSchema } from "@config/Global";
+---
+
+<div class="social-link-render">
+	<p>{FollowTip}</p>
+	<div class="links">
+		{SocialLinks.map(i => {
+			return (
+				<a aria-label={i.Desc} href={i.Link}>
+					<Icon name={i.Icon} />
+				</a>
+			)
+		})}
+	</div>
+</div>
+
+<style lang="scss" define:vars={CustomColorSchema}>
+	div.social-link-render {
+		&::before {
+			background-color: var(--IntroFont);
+		}
+
+
+		 > .links > a > [data-icon] {
+			color: var(--IntroFont);
+		}
+	}
+</style>

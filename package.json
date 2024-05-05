@@ -1,0 +1,25 @@
+{
+  "name": "apolachias-carte",
+  "type": "module",
+  "version": "3.0.0",
+  "license": "AGPL-3",
+  "author": "kobe-koto",
+  "homepage": "https://apolachia-card.pages.dev/",
+  "url": "https://github.com/kobe-koto/Apolachia_Card/",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro build && astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.1.4",
+    "@iconify-json/iconoir": "^1.1.44",
+    "astro": "^4.7.1",
+    "astro-compress": "^2.2.22",
+    "astro-icon": "^1.1.0",
+    "astro-seo": "^0.8.3",
+    "sass": "^1.76.0"
+  }
+}

@@ -1,0 +1,54 @@
+div.Intro {
+    > div {
+        position: absolute;
+    }
+    &[data-show="Front"] {
+        backdrop-filter: brightness(1);
+        > div.Front {
+            opacity: 0;
+            animation: FlipIn .75s ease forwards;
+            animation-delay: .75s;
+        }
+        > div.Back {
+            animation: FlipOut .75s ease forwards;
+            user-select: none;
+        }
+    }
+    &[data-show="Back"] {
+        backdrop-filter: brightness(.45);
+        > div.Front {
+            animation: FlipOut .75s ease forwards;
+            user-select: none;
+        }
+        > div.Back {
+            opacity: 0;
+            animation: FlipIn .75s ease forwards;
+            animation-delay: .75s;
+        }
+    }
+
+    &:not([data-show="Back"]):not([data-show="Front"]) {  // Back is hidden by defaule..
+        > div.Back {
+            opacity: 0;
+            user-select: none;
+        }
+    }
+}
+
+@keyframes FlipOut {
+    0% {}
+    100% {
+          opacity: 0;
+          transform: perspective(250px) translateY(18%) rotateX(-18deg);
+    }
+}
+@keyframes FlipIn {
+    0% {
+        opacity: 0;
+        transform: perspective(250px) translateY(-24%) rotateX(15deg);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}

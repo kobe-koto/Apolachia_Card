@@ -1,0 +1,59 @@
+---
+import "@assets/css/index.scss";
+import SEOComponent from "@components/SEOComponent.astro";
+import { CustomColorSchema } from "@config/Global"
+import { SEOConfig } from "@config/Global";
+
+import HeaderImage from "@assets/images/header.webp?url";
+
+
+import SocialLinkRender from "@components/index/SocialLinkRender.astro";
+
+
+const FrontDocument = (await import(`../content/documents/about-front.md`)).compiledContent();
+const BackDocument = (await import(`../content/documents/about-back.md`)).compiledContent();
+
+
+---
+
+<html lang={SEOConfig.Language}>
+	<head>
+		<SEOComponent/>
+	</head>
+	<body>
+
+		<div class="Intro-con">
+			<div class="Intro">
+				<div class="Front">
+					<div set:html={FrontDocument}></div>
+					<SocialLinkRender />
+				</div>
+				<div class="Back">
+					<div set:html={BackDocument}></div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
+
+<script>
+	document.querySelector("div.Intro").addEventListener("click", function (e) {
+		if (e.target.classList.contains("social-link-render")) {
+			return;
+		}
+
+		this.dataset.show = this.dataset.show === "Back" ? "Front" : "Back"
+	})
+</script>
+
+<style lang="scss" define:vars={{ BGImg: `url(${HeaderImage})`, ...CustomColorSchema }}>
+	// overriding default style 
+	div.Intro-con { 
+		color: var(--IntroFont);
+    	box-shadow: 6px 6px 64px 1px var(--IntroBackShadow);
+    	background-color: var(--IntroBackground);
+    	background-image: var(--BGImg);
+	}
+
+</style>
