@@ -4,7 +4,7 @@ import { validator } from "./utils/validator.js";
 import { generateConfig } from "./utils/generateConfig.js";
 import { writeConfig } from "./utils/writeConfig.js";
 const Validator = new validator;
-
+import { loopAskingSocialLink } from "./utils/loopAskingSocialLink.js";
 
 
 (async () => {
@@ -76,7 +76,7 @@ const Validator = new validator;
         { onCancel: () => { process.exit(0) } }
     )
 
-    const { CustomColorSchema } = await prompts (
+    const CustomColorSchema = await prompts (
         [
             {
                 type: "toggle",
@@ -90,11 +90,9 @@ const Validator = new validator;
     ).then(async res => {
         if (!res.isModifyCustomColorSchema) {
             return {
-                CustomColorSchema: {
-                    IntroBackground: "#201a1a",
-                    IntroFont: "#f8f8ff",
-                    IntroBackShadow: "#241f31"
-                }
+                IntroBackground: "#201a1a",
+                IntroFont: "#f8f8ff",
+                IntroBackShadow: "#241f31"
             }
         }
         return await prompts (
@@ -131,10 +129,35 @@ const Validator = new validator;
 
     writeConfig("Global", CompiledConfig)
 
-    console.log(chalk.green("👏 已为你写入基本配置"))
+    console.log(chalk.green("👏 已为你写入基本配置, 来添加一些社交链接吧"))
 
+    console.log(chalk.gray("🤔 提示: 您可参考 Readme 中的提示安装自订图标包以支援更多图标"))
+
+    const { FollowTip } = await prompts (
+        [
+            {
+                type: "text",
+                name: "FollowTip",
+                message: "关注提示词",
+                validate: Validator.isEmpty
+            }
+        ],
+        { onCancel: () => { process.exit(0) } }
+    )
+
+    let SocialLinks = await loopAskingSocialLink()
+
+    let CompiledSocialLinkConfig = generateConfig({
+        FollowTip,
+        SocialLinks
+    });
+
+    writeConfig("SocialLinks", CompiledSocialLinkConfig)
+
+    console.log(chalk.green("👏 已为你写入社交链接"))
     
 
 
-
 })();
+
+
