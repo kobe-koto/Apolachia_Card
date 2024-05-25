@@ -109,7 +109,7 @@ export const SocialLinks = [
 
   - `Icon`: Icon 名称, 参考 [Iconoir - Iconify](https://icon-sets.iconify.design/iconoir/), 选取一个 Icon 并复制形如 `iconoir:xxx` 的 Icon ID
 
-    也可以安装其他的图标包, 参考[Astro Icon - GitHub](https://github.com/natemoo-re/astro-icon).
+    也可以安装其他的图标包, 参考 [Astro Icon - GitHub](https://github.com/natemoo-re/astro-icon).
 
   - `Desc`: 链接描述
 
