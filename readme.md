@@ -8,7 +8,39 @@ Demo live in https://apolachia-card.pages.dev .
 
 ## 配置
 
-### 1. 设定头图
+### 1. 快速设定
+
+> 清先确保你已安装 Node.js 和 NPM 包管理器.
+
+#### 1.1 执行以下指令安装依赖
+
+```bash
+# NPM
+npm install
+
+# PNPM
+pnpm install
+
+# Yarn
+yarn install
+```
+
+#### 1.2 执行以下指令进入快速设定
+
+```bash
+# NPM
+npm run carte-setup
+
+# PNPM
+pnpm run carte-setup
+
+# Yarn
+yarn run carte-setup
+```
+
+并遵循提示进行设定
+
+### 2. 设定头图
 
 在以下位置找到 `header.webp` 并将其替换为你自己的头图.
 
@@ -22,9 +54,27 @@ Demo live in https://apolachia-card.pages.dev .
             └── header.webp
 ```
 
-### 2. 设定名片的基本配置
+### 3. 编辑文本
 
-在以下位置找到 `Global.js` 并按提示修改.
+自述文件在以下位置
+
+```
+└── src
+    ├── ...
+    └── content
+        ├── ...
+        └── documents
+            ├── about-back.md
+            └── about-front.md
+```
+
+- `about-front.md` 用于简易介绍你自己
+- `about-back.md` 用于详细介绍
+
+
+## 进阶配置
+
+### `Global.js` - 基本配置
 
 ```
 └── src
@@ -70,9 +120,7 @@ export const CustomColorSchema = {
   - `IntroFont`: 名片的字体颜色
   - `IntroBackShadow`: 名片背景阴影的颜色
 
-### 3. 设定你的社交链接
-
-在以下位置找到 `SocialLinks.js` 并修改
+### `SocialLinks.js` - 社交链接
 
 ```
 └── src
@@ -117,6 +165,15 @@ export const SocialLinks = [
 
   - `Link`: 链接 **(请填入 http 协议的有效链接)**
 
-## 部署
+## Credits
 
-~~我觉得大家都会吧~~ todo: deploy doc
+- Ported from https://koto.cc .
+
+- 原始码在 AGPL-3.0 以下进行分发, 不包括以下文件:
+
+  ```
+  └── src
+      └── assets
+          └── images
+              └── header.webp
+  ```
