@@ -27,10 +27,17 @@ div.Intro {
         }
     }
 
-    &:not([data-show="Back"]):not([data-show="Front"]) {  // Back is hidden by defaule..
+    &:not([data-show="Back"]):not([data-show="Front"]) {  // Back is hidden by default..
+        backdrop-filter: brightness(1);
+        > div.Front {
+            opacity: 0;
+            animation: FlipIn .75s ease forwards;
+            animation-delay: .0s;
+        }
         > div.Back {
             opacity: 0;
             user-select: none;
+            animation: none;
         }
     }
 }
